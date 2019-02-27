@@ -1,0 +1,30 @@
+<html>
+<head>
+  <meta charset="UTF-8"> 
+ 
+<body> 
+	<h1> <%= title %>  </h1> 
+	<form action="/", method="POST">
+		<input type="text", name="RegUsername", placeholder="username">
+		<input type="text", name="RegPassword", placeholder="password">
+		<button type="submit">submit button</button>
+	</form>
+ 
+
+	<%if (lala) { %>  
+
+		<h1>foo</h1>
+
+		<% for(var i=0; i < lala.length; i++) { %> 
+			<td><%= lala[i].id %></td>
+			<td><%= lala[i].username %></td>   
+			<td><%= lala[i].password %></td>   
+			<a href='/leads/<%= lala[i].id %>'> Details </a> 
+			<a href='/leads/<%= lala[i].id %>/edit'> edit </a> 
+			<a href='/leads/<%= lala[i].id %>/delete'> delete </a><br>
+		<% } %>
+
+	<% } %>
+ 
+</body>
+</html>

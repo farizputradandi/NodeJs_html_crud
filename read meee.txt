@@ -1,0 +1,89 @@
+tutorial based on https://www.youtube.com/watch?v=G8uL0lFFoN0&t=917s
+
+Node Version Manager - Simple bash script to manage multiple active node.js versions
+	https://github.com/creationix/nvm
+		scroll down and install nvm for windows
+
+main folder
+	C:\ProgramData\nvm
+
+install different node js in nvm
+	nvm --version
+	nvm install 10.15.0
+	nvm install 8.11.3 //as u wish
+
+	change node.js version to desired one 
+		nvm.use 10.15.0
+
+getting started
+	open https://expressjs.com/en/starter/generator.html
+	in directory cmd -> npm install express-generator -g
+						express --view=pug myapp
+	in myapp -> npm install
+	run project -> npm start
+		open localhost:3000
+
+	public -> contains asset
+		images, store logos photo img
+
+	routes -> router ligic to direct, this is key part
+
+	view -> html page
+		app.js -> main app, main handler
+	controllers -> store all routes handler
+	bin -> www-> script for web server
+
+
+make a url access
+	app.set('views', path.join(__dirname, 'views')); //view are included in directory called views
+	app.set('view engine', 'pug');//use pug as view engine 
+
+	var indexRouter = require('./routes/index'); // whatever exported to index js saved in indexRouter variable
+	var usersRouter = require('./routes/users');//calling another directory to be used as variable
+
+	app.use('/', indexRouter); //we use indexRouter as root which is shown in the first page at localhost:3000
+	app.use('/users', usersRouter);
+
+
+
+tips make controllers folder -> to make router.get easier
+	inside routers/index.js 
+		there's a code
+			router.get('/', function(req, res, next) { 
+		  		res.render('index', { title: 'Express' }); 
+			});		
+
+		then we cut the function and leave 
+
+			router.get('/', );		
+
+		then add this session, check below this session, after put something in controllers/index.js
+
+			let lala = require('../controllers/index');
+			router.get('/', lala.index);											 
+	
+
+	inside controllers/index.js
+	
+			exports.index = function(req, res, next) { //exports the index and taken by routes/index.js
+			  res.render('index', { title: 'Express' }); //index here refers to views/index.pug
+			}
+
+
+	inside app.js
+		there's 2 think 
+			app.set('views', path.join(__dirname, 'views')); //view are included in directory called views
+			app.set('view engine', 'pug');//use pug as view engine
+
+
+install git as db
+	open gitbash cd to directory
+		git init-db
+
+	in myapp
+		mkdir .gitignore
+			type -> node_modules //thi used to not make ur project auto update to git or exclude something unncessary
+
+
+http://docs.sequelizejs.com/manual/tutorial/migrations.html
+	copy .sequelizer data

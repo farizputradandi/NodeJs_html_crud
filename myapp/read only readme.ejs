@@ -1,0 +1,31 @@
+ 
+stupid trick
+	works
+		<input type="text", name="RegUsername", value="<%= lala.username %>">  
+
+    not works , karena ada spasi setelah regusername, kalo mau , gaboleh spasi dulu
+    <input type="text", name="RegUsername" ,value="<%= lala.username %>">  
+
+
+ada 3 cara ngepass sql
+
+  pertama,   data sql disimpen di takeId
+    let sql = 'DELETE FROM register WHERE id = ?';
+    let query = db.query(sql,takeId, (err, result) => 
+     
+  kedua, store banyak data di post terus pake  [post,takeId],
+    let takeId = req.params.user_id;       
+    let post = {username:req.body.RegUsername, password:req.body.RegPassword}; 
+    let sql = 'UPDATE register SET ? WHERE id = ?';
+    let query = db.query(sql,[post,takeId], (err, result) => {
+  
+  ketiga
+    takeId = req.params.user_id;                 
+    let sql = `SELECT * FROM register WHERE id = ${takeId}`;
+    let query = db.query(sql, (err, results) => {
+      
+if else
+https://stackoverflow.com/questions/8216918/can-i-use-conditional-statements-with-ejs-templates-in-jmvc
+
+href + value passed, forr loop
+https://stackoverflow.com/questions/10777246/interweave-ejs-and-javascript-variables-inside-tags
